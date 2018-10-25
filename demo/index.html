@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kenya Counties Raphaël JS Map</title>
+    <style>
+        /**
+         * Basic styles for container and hover.
+         */
+        #container {
+            width: 600px;
+            height: 700px;
+        }
+        #container path:hover {
+            fill: #cacaca;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <!-- Raphaël JS Map Here -->
+</div>
+
+<script src="../lib/raphael.min.js"></script>
+<script src="../paths/kenya-counties.js"></script>
+<script>
+
+var R = Raphael("container", 600, 700),
+        attr = {
+            "fill": "#b9b9b9",
+            "stroke": "#fff",
+            "stroke-miterlimit": "4",
+            "stroke-width": "1",
+            "transform": "s0.8,0.8,60,0"
+        
+        };
+    // Define map object.
+    var kenyaMap = {};
+    for (var county in kenyaCounties) {
+        // Draw a path, then apply attributes to it.
+        kenyaMap[county] = R.path(kenyaCounties[county]).attr(attr);
+        // Name the internal Raphael id after the countiesPaths property name.
+        kenyaMap[county].id = county;
+        // Name the element id after the countiesPaths property name.
+        kenyaMap[county].node.id = county;
+    }
+
+</script>
+</body>
+</html>
